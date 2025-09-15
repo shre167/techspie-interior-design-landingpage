@@ -27,20 +27,19 @@ const Hero = () => {
 
       {/* Content */}
       <div
-        className="relative z-10 text-center max-w-full sm:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 
-        mt-8 sm:mt-0"
+        className="relative z-10 text-center max-w-full sm:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 sm:mt-0"
       >
         <div className="fade-in-up">
           {/* Opaque bar for mobile */}
           <div className="sm:hidden bg-black/60 backdrop-blur-md rounded-2xl px-4 py-6 mb-6">
-            <h1 className="text-2xl font-black text-white leading-snug">
+            <h1 className="text-2xl font-extrabold text-white leading-snug">
               Crafting
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60 font-black">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60 font-extrabold">
                 Extraordinary
               </span>
               Living Spaces
             </h1>
-            <p className="text-sm text-white/90 mt-3 font-semibold leading-relaxed">
+            <p className="text-sm text-white/90 mt-3 font-medium leading-relaxed">
               Transform your space into a masterpiece of design, functionality, and
               luxury. We create environments that inspire and elevate your daily
               living experience.
@@ -49,14 +48,14 @@ const Hero = () => {
 
           {/* Normal heading/subheading for larger screens */}
           <div className="hidden sm:block">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-snug md:leading-tight">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-white mb-6 leading-snug md:leading-tight">
               Crafting
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60 font-black">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary/60 font-extrabold">
                 Extraordinary
               </span>
               Living Spaces
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-12 max-w-2xl md:max-w-3xl mx-auto font-semibold leading-relaxed">
+            <p className="text-lg md:text-xl lg:text-2xl text-white/90 mb-12 max-w-2xl md:max-w-3xl mx-auto font-medium leading-relaxed">
               Transform your space into a masterpiece of design, functionality, and
               luxury. We create environments that inspire and elevate your daily
               living experience.
@@ -67,15 +66,22 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 sm:mb-16">
             <Button
               size="lg"
-              className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg group bg-primary hover:bg-primary/90 text-primary-foreground"
+              className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg group bg-primary hover:bg-primary/90 text-primary-foreground transition-all duration-300"
             >
               Start Your Project
-              <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 sm:w-5 h-4 sm:h-5 ml-1 sm:ml-2 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
+
             <Button
               size="lg"
               variant="outline"
-              className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-white text-black border border-white rounded-lg hover:bg-white hover:text-black active:bg-white active:text-black"
+              className="px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg border-black/30 bg-white text-black hover:text-white hover:bg-black/70 transition-all duration-300"
+              onClick={() => {
+                const portfolioSection = document.getElementById('portfolio');
+                if (portfolioSection) {
+                  portfolioSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
               View Portfolio
             </Button>

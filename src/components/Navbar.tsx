@@ -4,15 +4,7 @@ import { Menu, X, Mail } from 'lucide-react';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > window.innerHeight * 0.7); // change after ~70% of hero
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [activeLink, setActiveLink] = useState('Home');
 
   const navLinks = [
     { name: 'Home', href: '#home' },
@@ -21,6 +13,23 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Contact', href: '#contact' },
   ];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > window.innerHeight * 0.7);
+
+      const scrollPos = window.scrollY + 100;
+      navLinks.forEach(link => {
+        const section = document.querySelector(link.href);
+        if (section?.offsetTop <= scrollPos && section?.offsetTop + section?.offsetHeight > scrollPos) {
+          setActiveLink(link.name);
+        }
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <nav
@@ -36,8 +45,9 @@ const Navbar = () => {
           <div className="absolute left-1/2 transform -translate-x-1/2 lg:static lg:transform-none">
             <a
               href="#home"
-              className={`text-3xl font-black tracking-tight transition-colors duration-500
-                ${isScrolled ? 'text-primary' : 'text-white'}`}
+              className={`text-3xl font-black tracking-tight transition-colors duration-500 ${
+                isScrolled ? 'text-primary' : 'text-white'
+              } logo`}
             >
               Harmony
             </a>
@@ -46,11 +56,17 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:block ml-10">
             <div className="flex items-center space-x-8">
-              {navLinks.map((link) => (
+              {navLinks.map(link => (
                 <a
                   key={link.name}
                   href={link.href}
-                  className="relative text-foreground hover:text-primary transition-all duration-300 font-medium group py-2"
+                  className={`relative font-bold py-2 transition-all duration-300 group ${
+                    activeLink === link.name
+                      ? 'text-primary'
+                      : isScrolled
+                      ? 'text-primary'
+                      : 'text-white'
+                  }`}
                 >
                   {link.name}
                   <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-gradient-to-r from-primary to-primary/60 transition-all duration-300 group-hover:w-full"></span>
@@ -63,7 +79,7 @@ const Navbar = () => {
           <div className="lg:hidden ml-auto">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 text-foreground hover:text-primary transition-all duration-300 hover:bg-primary/5 rounded-lg"
+              className="p-2 text-white hover:text-primary transition-all duration-300 hover:bg-primary/5 rounded-lg"
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -84,9 +100,9 @@ const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="block px-4 py-3 text-foreground hover:text-primary hover:bg-primary/5 transition-all duration-300 font-medium rounded-lg group"
+                className="block px-4 py-3 font-bold text-black hover:text-primary hover:bg-primary/10 transition-all duration-300 rounded-lg group mobile-link"
+                style={{ animation: `fadeInUp 0.3s forwards`, animationDelay: `${index * 0.05}s` }}
                 onClick={() => setIsMobileMenuOpen(false)}
-                style={{ animationDelay: `${index * 50}ms` }}
               >
                 {link.name}
               </a>
@@ -96,7 +112,7 @@ const Navbar = () => {
             <div className="pt-4 mt-4 border-t border-border/20">
               <a
                 href="mailto:hello@harmonyspacesco.com"
-                className="flex items-center space-x-3 px-4 py-3 text-foreground hover:text-primary transition-colors duration-300"
+                className="flex items-center space-x-3 px-4 py-3 text-black hover:text-primary transition-colors duration-300"
               >
                 <Mail size={18} />
                 <span className="font-medium">hello@harmonyspacesco.com</span>
@@ -105,6 +121,23 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
+      {/* Add animation styles */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          0% {
+            opacity: 0;
+            transform: translateY(10px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .logo {
+          text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        }
+      `}</style>
     </nav>
   );
 };
