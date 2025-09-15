@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Luxury Interior Design System - All colors, gradients, fonts, etc defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 13% 18%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 13% 18%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 13% 18%;
+
+    /* Elegant Gold Primary */
+    --primary: 45 93% 47%;
+    --primary-foreground: 0 0% 100%;
+    --primary-muted: 45 30% 90%;
+
+    /* Sophisticated Secondary */
+    --secondary: 220 13% 96%;
+    --secondary-foreground: 220 13% 18%;
+
+    /* Professional Accent */
+    --accent: 220 13% 15%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 220 13% 25%;
+
+    --muted: 220 13% 97%;
+    --muted-foreground: 220 13% 45%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 45 93% 47%;
+
+    --radius: 1rem;
+
+    /* Professional Design Tokens */
+    --hero-overlay: 220 13% 3%;
+    --luxury-gradient: linear-gradient(135deg, hsl(45 93% 47%) 0%, hsl(45 93% 57%) 100%);
+    --subtle-gradient: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(220 13% 98%) 100%);
+    --shadow-luxury: 0 25px 50px -12px hsl(220 13% 18% / 0.25);
+    --shadow-card: 0 8px 30px -8px hsl(220 13% 18% / 0.12);
+    --shadow-elegant: 0 4px 20px -4px hsl(220 13% 18% / 0.08);
+    --transition-smooth: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 210 15% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 210 15% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 210 15% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 43 60% 65%;
+    --primary-foreground: 210 15% 8%;
+
+    --secondary: 210 15% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --accent: 43 40% 80%;
+    --accent-foreground: 210 15% 8%;
+
+    --muted: 210 15% 15%;
+    --muted-foreground: 210 10% 70%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 210 15% 20%;
+    --input: 210 15% 20%;
+    --ring: 43 60% 65%;
+
+    --hero-overlay: 210 15% 2%;
+    --shadow-luxury: 0 20px 40px -12px hsl(0 0% 0% / 0.5);
+    --shadow-card: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-montserrat antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Scroll Reveal Animations */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition-smooth);
+  }
+
+  .fade-in-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: var(--transition-smooth);
+  }
+
+  .fade-in-left.in-view {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .fade-in {
+    opacity: 0;
+    transition: var(--transition-smooth);
+  }
+
+  .fade-in.in-view {
+    opacity: 1;
+  }
+
+  .scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: var(--transition-smooth);
+  }
+
+  .scale-in.in-view {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* Luxury hover effects */
+  .luxury-hover {
+    transition: var(--transition-fast);
+  }
+
+  .luxury-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-luxury);
+  }
+
+  /* Navbar styles */
+  .navbar-glass {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: hsl(0 0% 100% / 0.85);
+    border-bottom: 1px solid hsl(var(--border) / 0.5);
+  }
+
+  /* Hero video overlay */
+  .hero-overlay {
+    background: linear-gradient(135deg, 
+      hsl(var(--hero-overlay) / 0.7) 0%, 
+      hsl(var(--hero-overlay) / 0.5) 100%);
+  }
+
+  /* Portfolio grid hover effects */
+  .portfolio-item {
+    overflow: hidden;
+    transition: var(--transition-smooth);
+  }
+
+  .portfolio-item img {
+    transition: var(--transition-smooth);
+  }
+
+  .portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-luxury);
+  }
+
+  .portfolio-item:hover img {
+    transform: scale(1.1);
+  }
+}
