@@ -33,17 +33,6 @@ It showcases elegant layouts, a video hero section, smooth animations, and a gla
 
 
 
-## 🛠️ Tech Stack  
-
-- **React** (with SWC for optimized builds)  
-- **Vite** (bundler & dev server)  
-- **Tailwind CSS** (styling)  
-- **Lucide React** (icons)  
-- **shadcn/ui** (UI components)  
-
----
-
-
 ## ⚙️ Installation & Setup  
 
 Clone the repo:  
