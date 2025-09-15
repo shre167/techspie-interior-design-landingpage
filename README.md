@@ -43,23 +43,6 @@ It showcases elegant layouts, a video hero section, smooth animations, and a gla
 
 ---
 
-## 📂 Project Structure  
-interior-design-landing/
-├── public/ # Static assets (favicons, screenshots)
-├── src/
-│ ├── assets/ # Images, background videos
-│ ├── components/ # Reusable UI components
-│ │ ├── Navbar.jsx
-│ │ ├── Hero.jsx
-│ │ └── ...
-│ ├── App.jsx # Main entry component
-│ └── main.jsx # React root render
-├── index.html
-├── tailwind.config.js
-├── vite.config.js
-└── package.json
-
----
 
 ## ⚙️ Installation & Setup  
 
