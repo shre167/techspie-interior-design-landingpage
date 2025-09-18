@@ -1,2 +1,1 @@
-# techspie-interior-design-landingpage
 
