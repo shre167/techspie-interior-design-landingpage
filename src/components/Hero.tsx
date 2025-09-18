@@ -1,6 +1,5 @@
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Star, Award, Users } from 'lucide-react';
-import VideoBg from '@/assets/AdobeStock_1667938560_Video_HD_Preview.mov';
 
 const Hero = () => {
   return (
@@ -11,7 +10,7 @@ const Hero = () => {
       {/* Background Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
-        src={VideoBg}
+        src="/videos/AdobeStock_1667938560_Video_HD_Preview.mov"
         autoPlay
         loop
         muted
